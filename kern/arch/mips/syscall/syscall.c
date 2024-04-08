@@ -115,12 +115,13 @@ syscall(struct trapframe *tf)
 	    break;
 
 	    /* Add stuff here */
+	    case SYS_add_three_integers:
+	   	err = sys_add_three_integers(tf->tf_a0, tf->tf_a1, tf->tf_a2, &retval);
+	   	break;
 
-
-
-
-
-
+		case SYS_printchar:
+			err = sys_printchar(tf->tf_a0);
+			break;
 		
 	    default:
 		kprintf("Unknown syscall %d\n", callno);
